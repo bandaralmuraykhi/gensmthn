@@ -10,31 +10,38 @@ import (
 )
 
 func main() {
+	// Open the "report.json" file for reading.
 	jsonFile, err := os.Open("report.json")
-
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
-	// defer the closing of our jsonFile so that we can parse it later on
+
+	// Defer the closing of our jsonFile to ensure it's closed later.
 	defer jsonFile.Close()
 
+	// Read the entire JSON file into a byte slice.
 	byteValue, _ := io.ReadAll(jsonFile)
 
+	// Create a map to hold the JSON data.
 	var result map[string]interface{}
+
+	// Unmarshal the JSON data into the result map.
 	json.Unmarshal(byteValue, &result)
 
-	s := result["Genre"].(map[string]interface{})
+	// Extract the "Genre" and "Movie" parts from the result map.
+	genres := result["Genre"].(map[string]interface{})
+	movies := result["Movie"].(map[string]interface{})
 
-	for k, v := range s {
+	// Print genre earnings.
+	fmt.Println("Genre Earnings:")
+	for k, v := range genres {
 		fmt.Printf("%-30s %v\n", k, v)
 	}
-	// ################## different way to do it #####################
-	// // fmt.Println(report)
-	// for k, v := range report.Movie {
-	// 	fmt.Println(k, v)
-	// }
-	// for k, v := range report.Genre {
-	// 	fmt.Println(k, v)
-	// }
 
+	// Print movie earnings.
+	fmt.Println("\nMovie Earnings:")
+	for k, v := range movies {
+		fmt.Printf("%-30s %v\n", k, v)
+	}
 }
