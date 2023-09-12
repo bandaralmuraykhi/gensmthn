@@ -1,0 +1,20 @@
+{
+ "Movie": {
+  "12 Angry Men": 30306,
+  "American Psycho": 13105,
+  "Fight Club": 20387,
+  "Inception": 20816,
+  "Movie": 0,
+  "Pulp Fiction": 26386,
+  "The Dark Knight": 10743,
+  "The Godfather": 20788,
+  "The Matrix": 29969,
+  "The Pianist": 40638
+ },
+ "Genre": {
+  "Action": 75058,
+  "Comdey": 82400,
+  "Drama": 55680,
+  "Genre": 0
+ }
+}
